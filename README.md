@@ -1,78 +1,106 @@
 # FinancialMarketIntelligenceLab
 
-A Data Science project exploring Bitcoin prices in USD,
-the S&P 500 index, and US Treasury yields.
+An exploratory Data Science research project investigating the relationship between Bitcoin (BTC-USD), the S&P 500 index, and the US interest-rate environment.
 
 ## Research question
 
-How do Bitcoin and S&P 500 returns and volatility vary
-over time, and how are they associated with changes
-in the interest-rate environment?
+How do Bitcoin and S&P 500 returns and volatility vary over time, and how are they associated with changes in the interest-rate environment?
+
+## Research objectives
+
+- Explore historical financial time series and daily returns.
+- Assess data quality, coverage, consistency, and missing observations.
+- Investigate returns, volatility, and relationships between financial variables.
+- Apply statistical hypothesis testing to financial research questions.
+- Communicate findings through visualizations, statistical evidence, and explicit limitations.
 
 ## Data sources
 
-1. Yahoo Finance, accessed through yfinance:
-   - BTC-USD: Bitcoin prices in US dollars.
-   - ^GSPC: S&P 500 price index.
-   - Downloaded coverage: January 2018–November 2026.
+| Source | Series | Description |
+| --- | --- | --- |
+| [Yahoo Finance](https://finance.yahoo.com/) | BTC-USD | Bitcoin prices in US dollars |
+| Yahoo Finance | ^GSPC | S&P 500 price index |
+| [FRED / Federal Reserve Board](https://fred.stlouisfed.org/series/DGS10) | DGS10 | 10-year Treasury constant-maturity market yield, percent per annum |
 
-2. Federal Reserve Board, distributed through FRED:
-   - DGS10: 10-year Treasury constant-maturity market yield.
-   - Units: percent per annum.
-   - https://fred.stlouisfed.org/series/DGS10
+The Yahoo Finance data were downloaded through `yfinance`, with coverage from January 2018 to November 2026. Exact coverage and download details are documented in the notebooks. Raw data are stored locally in `data/raw/`.
 
-Exact coverage and download details are documented
-in the notebook. Raw data are stored locally in data/raw.
+Earlier exploratory inputs include Binance BTC/USDT data and a Kaggle S&P 500 file. BTC/USDT is distinct from BTC-USD. These preliminary inputs are not silently combined with the USD analysis.
 
-Earlier exploratory inputs include Binance BTC/USDT data
-and a Kaggle S&P 500 file. BTC/USDT is distinct from
-BTC-USD; these inputs are retained as preliminary work
-and are not silently combined with the USD analysis.
+## Research workflow
 
-## Current progress
+| Stage | Notebook | Focus |
+| --- | --- | --- |
+| 01 | [Data Exploration](notebooks/01_data_exploration.ipynb) | Initial exploration, descriptive analysis, daily returns, and data acquisition |
+| 02 | [Market Data Validation](notebooks/02_market_data_validation.ipynb) | Financial data quality and validation |
+| 03 | Hypothesis Testing | Statistical investigation of financial research questions |
 
-- Initial Bitcoin price exploration and daily returns.
-- Preliminary Binance OHLCV validation.
-- Downloaded BTC-USD and S&P 500 data from Yahoo Finance.
-- Downloaded Treasury yields from an independent source.
-- Recorded source information and initial coverage checks.
+The notebooks form a progressive research workflow, from data exploration and validation to statistical inference.
 
-## Next steps
-
-- Validate the newly downloaded datasets.
-- Review missing observations and trading calendars.
-- Account for different observation and closing times.
-- Merge the datasets and analyze returns and volatility.
-- Present visual evidence, conclusions and limitations.
-
-Price forecasting is planned for the later Machine
-Learning course and is not implemented in this stage.
+The statistical methodology considers null and alternative hypotheses, significance levels, p-values, confidence intervals, test assumptions, and practical interpretation. The choice of statistical test depends on the research question and the properties of the data.
 
 ## Project structure
 
-- notebooks/01_data_exploration.ipynb — analysis notebook.
-- data/raw/ — local source files.
-- src/ — directory reserved for reusable code.
-- tests/ — directory reserved for validation tests.
+```text
+FinancialMarketIntelligenceLab/
+├── data/
+│   └── raw/       # Local source data
+├── notebooks/     # Exploration, validation, and hypothesis testing
+├── src/           # Reserved for reusable Python code
+├── tests/         # Reserved for validation tests
+└── README.md
+```
 
-## Running the notebook
+## Technologies
 
-Required packages:
-pandas, numpy, matplotlib, seaborn, yfinance.
+- Python and Jupyter Notebook
+- pandas and NumPy — data processing and numerical analysis
+- Matplotlib and seaborn — visualization and exploratory data analysis
+- yfinance — financial data acquisition
 
-From the project directory:
+## Running the notebooks
 
-    cd notebooks
-    jupyter notebook
+From the project directory, install the baseline dependencies:
 
-The current notebook contains preliminary sections requiring
-the earlier input files. Downloaded data and package versions
-may change; reproducibility will be improved during development.
+```bash
+python -m pip install pandas numpy matplotlib seaborn yfinance scipy notebook
+```
+
+Launch Jupyter:
+
+```bash
+cd notebooks
+jupyter notebook
+```
+
+Run the notebooks in numerical order. Some preliminary sections require earlier input files. The dependency list is a starting point rather than a verified, version-pinned environment; reproducibility will be improved during development.
+
+## Project status
+
+**Updated: 25 November 2026**
+
+- [x] Initial data exploration and daily returns
+- [x] Preliminary Binance OHLCV validation
+- [x] Financial data acquisition and source documentation
+- [x] Market data validation notebook
+- [x] Hypothesis testing notebook
+- [ ] Consolidate visual evidence, statistical findings, and limitations
+- [ ] Improve reproducibility and reusable code
+
+## Future development
+
+- Review missing observations, trading calendars, and differences in observation and closing times as needed.
+- Refine dataset alignment and the analysis of returns and volatility.
+- Consolidate statistical results and assess their robustness.
+- Evaluate additional visualization and image-based techniques where they serve the research question.
+- Explore forecasting using Machine Learning in a later course stage, with appropriate time-aware validation.
+
+Price forecasting is not implemented at this stage.
 
 ## Limitations
 
-This is an exploratory educational project.
-Associations do not establish causation.
-The S&P 500 price index does not include dividend reinvestment.
-Treasury yields are interest-rate levels, not investment returns.
-No forecasting performance or trading profitability is claimed.
+- This is an exploratory educational research project, not financial advice.
+- Statistical associations do not establish causation.
+- Bitcoin and traditional financial markets have different trading calendars and observation times.
+- The S&P 500 price index does not include dividend reinvestment.
+- Treasury yields are interest-rate levels, not investment returns.
+- No forecasting performance or trading profitability is claimed.
